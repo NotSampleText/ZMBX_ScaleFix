@@ -1,0 +1,10 @@
+import bpy
+
+objects = bpy.data.objects
+
+for obj in objects:
+    if 'part' in obj.name:
+        for m in obj.data.materials:
+            for k,v in m.node_tree.nodes.items():
+                if k == "Value":
+                    m.node_tree.nodes[k].outputs[0].default_value = 1
